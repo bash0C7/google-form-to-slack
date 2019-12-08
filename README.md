@@ -1,3 +1,23 @@
+# bash update
+
+書き換え箇所のGoogle App Scriptのプロジェクトプロパティ化
+
+## プロジェクトプロパティーの設定
+
+```
+SLACK_WEBHOOK_URL
+SLACK_SCREEN_NAME
+SLACK_MESSAGE_TITLE
+SLACK_CHANNEL
+SLACK_CHANNEL_TEST
+```
+
+# スクリプトの更新
+
+済
+
+-------------------------
+
 # やること
 Google Forms のフォームの回答が送信された時に、Slack チャンネルに内容が届くようにする
 

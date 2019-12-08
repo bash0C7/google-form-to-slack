@@ -1,11 +1,11 @@
 function sendToSlack(fallback, fields, channel) {
-  const url = "■１■"
+  const url = PropertiesService.getScriptProperties().getProperty('SLACK_WEBHOOK_URL');
   const data = {
     "channel" : channel,
-    "username" : "Googleフォーム Bot",  // 1: bot 名
+    "username" : PropertiesService.getScriptProperties().getProperty('SLACK_SCREEN_NAME'),  // 1: bot 名
     "attachments" : [{
       "fallback" : fallback,
-      "text" : "★３★",
+      "text" : PropertiesService.getScriptProperties().getProperty('SLACK_MESSAGE_TITLE'),
       "fields": fields,
       "color": "good",  // 3: 左線の色
     }],
@@ -19,11 +19,10 @@ function sendToSlack(fallback, fields, channel) {
     "muteHttpExceptions": true,
   };
   const response = UrlFetchApp.fetch(url, options);
-  Logger.log(response)
 }
 
 function test() {
-  sendToSlack("テスト通知確認です", [], "■２■");
+  sendToSlack("テスト通知確認です", [], PropertiesService.getScriptProperties().getProperty('SLACK_CHANNEL_TEST'));
 }
 
 function responseToText(itemResponse) {
@@ -66,5 +65,5 @@ function onFormSubmit(e){
     }
   });
 
-  sendToSlack(fallback, fields, "■２■");
+  sendToSlack(fallback, fields, PropertiesService.getScriptProperties().getProperty('SLACK_CHANNEL'));
 }
